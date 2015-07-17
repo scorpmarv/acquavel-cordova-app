@@ -9,11 +9,14 @@ $( document ).ready(function() {
             dataType: "json",
             async: true,
             success: function (result) {
+                var testJson = JSON.stringify(result);
+                localStorage.setItem('testObject', testJson);
+
                 //alert(result.dni);
-                window.location="home.html?usr=" + url;
+                window.location="home2.html";
             },
             error: function (xhr, ajaxOptions, thrownError) { console.log("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
-    }
+            }
         });         
     });
 });
