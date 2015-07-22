@@ -1,0 +1,42 @@
+.hidden {
+	display: none;
+}
+
+.calendar-titles i {
+	display: none;
+}
+
+.calendar-titles .selected-day {
+	color: white;
+}
+
+.calendar-titles .selected-day i {
+	position: absolute;
+	font-size: 35px;
+	margin-top: 3px;
+	margin-left: 11px;
+	z-index: -1;
+	color: green;
+	display: block;
+}
+
+.extended-calendar .hidden {
+	display: none;
+}
+
+.calendar-hour {
+    min-height: 80px;
+    height: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 15px;
+}
+
+.calendar-hour em {
+    font-style: normal;
+    font-size: 11px;
+    padding-left: 100px;
+    color: #666;
+    min-width: 100%;
+    position: relative;
+    display: inline-block;
+}
