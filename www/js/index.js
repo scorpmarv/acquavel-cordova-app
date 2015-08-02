@@ -1,23 +1,20 @@
 (function ($) {
-$( document ).ready(function() {
-    $(document).on('click', '#login-btn', function(e){
-        e.preventDefault();
-        var url = $(".login-username").val();        
-         
+    $( document ).ready(function() {
+
         $.ajax({
-            url: "http://10.0.2.15:8000/api/socio/" + url + "/?format=json",
+            url: "http://acquavel.herokuapp.com/api/actividades/?format=json",
             dataType: "json",
             async: true,
             success: function (result) {
-                var testJson = JSON.stringify(result);
-                localStorage.setItem('testObject', testJson);
-
-                //alert(result.dni);
-                window.location="home2.html";
+                var actividadesJSON = JSON.stringify(result);
+                localStorage.setItem('actividades', actividadesJSON);
+                console.log(result);
             },
-            error: function (xhr, ajaxOptions, thrownError) { console.log("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
             }
-        });         
+        });
     });
-});
+
 }(jQuery));
+

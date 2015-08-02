@@ -10,14 +10,13 @@
 	color: white;
 }
 
-.calendar-titles .selected-day i {
-	position: absolute;
-	font-size: 35px;
-	margin-top: 3px;
-	margin-left: 11px;
-	z-index: -1;
-	color: green;
-	display: block;
+.calendar-titles .selected-day div {
+	background-color: green;
+    width: 37px;
+    height: 37px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100px;
 }
 
 .extended-calendar .hidden {

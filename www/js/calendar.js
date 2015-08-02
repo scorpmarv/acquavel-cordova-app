@@ -1,23 +1,31 @@
 (function ($) {
     var actividades;
     $( document ).ready(function() {
-        var retrievedObject = JSON.parse(localStorage.getItem('testObject'));
-        console.log(retrievedObject);
+        actividades = JSON.parse(localStorage.getItem('actividades'));
 
-        $.ajax({
-            url: "http://10.0.2.15:8000/api/actividades/?format=json",
-            dataType: "json",
-            async: true,
-            success: function (result) {
-                var actividadesJSON = JSON.stringify(result);
-                localStorage.setItem('actividades', actividadesJSON);
-                console.log(result);
-                actividades = result;
-                loadCalendar();
-            },
-            error: function (xhr, ajaxOptions, thrownError) { console.log("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
-            }
-        });
+        if (actividades) {
+            loadCalendar();
+            console.log('if');
+        } else {
+            console.log('else');
+            $.ajax({
+                url: "http://acquavel.herokuapp.com/api/actividades/?format=json",
+                dataType: "json",
+                async: true,
+                success: function (result) {
+                    var actividadesJSON = JSON.stringify(result);
+                    localStorage.setItem('actividades', actividadesJSON);
+                    console.log(result);
+                    actividades = result;
+                    loadCalendar();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+                }
+            });
+        }
+
+
 
         $('.calendar-titles').on('click', 'a', function (e){
             if (!$(this).hasClass('selected-day')) {
@@ -42,6 +50,6 @@
                 console.log('Dia: ' + day + '  Hora 1: ' + startHour + '  Hora 2: ' + endHour);
                 $('.' + day + '-calendar').find('.hour-' + startHour).append('<em>' + description + '</em>');
             });
-        }); 
+        });
     }
 }(jQuery));
