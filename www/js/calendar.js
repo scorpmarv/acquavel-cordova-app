@@ -1,18 +1,26 @@
 (function ($) {
     var actividades;
     $( document ).ready(function() {
+        var thisTime = new Date().getTime();
+        if ((thisTime - localStorage.getItem('setLocalStorageTime')) >= 86400000){
+            localStorage.clear();
+        }
+
         actividades = JSON.parse(localStorage.getItem('actividades'));
 
-        if (actividades) {
+        if (actividades && (actividades.length != 0)) {
             loadCalendar();
             console.log('if');
+            $("#debug").append('<div>IF</div>');
         } else {
             console.log('else');
+            $("#debug").append('<div>ELSE</div>');
             $.ajax({
                 url: "http://acquavel.herokuapp.com/api/actividades/?format=json",
                 dataType: "json",
                 async: true,
                 success: function (result) {
+                    $("#debug").append('<div>SUCCESS</div>');
                     var actividadesJSON = JSON.stringify(result);
                     localStorage.setItem('actividades', actividadesJSON);
                     console.log(result);
@@ -21,6 +29,7 @@
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+                    $("#debug").append('<div>ERROR</div>');
                 }
             });
         }

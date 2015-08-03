@@ -1,6 +1,11 @@
 (function ($) {
     var userData;
     $( document ).ready(function() {
+        var thisTime = new Date().getTime();
+        if ((thisTime - localStorage.getItem('setLocalStorageTime')) >= 86400000){
+            localStorage.clear();
+        }
+
         userData = JSON.parse(localStorage.getItem('userData'));
 
         if (userData) {

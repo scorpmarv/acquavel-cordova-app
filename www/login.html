@@ -12,15 +12,18 @@
 <link href="styles/swipebox.css"         rel="stylesheet" type="text/css">
 <link href="styles/font-awesome.css"     rel="stylesheet" type="text/css">
 <link href="styles/animate.css"          rel="stylesheet" type="text/css">
+<link href="css/login.css"            rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
 <script type="text/javascript" src="scripts/framework.plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
 
 </head>
-<body> 
+<body>
 
 <div id="preloader">
 	<div id="status">
@@ -42,7 +45,7 @@
                 <li><a href="calendar.html"><i class="fa fa-clock-o"></i>Horarios<i class="fa fa-circle"></i></a></li>
                 <li><a href="contact.html"><i class="fa fa-envelope"></i>Contacto<i class="fa fa-circle"></i></a></li>
                 <li><a href="my-info.html"><i class="fa fa-user"></i>Mis clases<i class="fa fa-circle"></i></a></li>
-                <li><a href="#" class="sidebar-close"><i class="fa fa-times"></i>Close<i class="fa fa-circle"></i></a></li>
+                <li><a href="#" class="exit-app"><i class="fa fa-times"></i>Salir<i class="fa fa-circle"></i></a></li>
             </ul>
             <div class="center-socials">
                 <a href="#" class="facebook-color facebook-social"><i class="fa fa-facebook"></i></a>
@@ -66,6 +69,9 @@
                 <p>
                     Si ya es socio por favoir ingrese su DNI
                 </p>
+                <div class="static-notification-blue hidden" id="no-user">
+                    <p class="center-text ">Ups! Al parecer todavía no eres socio</p>
+                </div>
                 <input type="number" placeholder="DNI" class="login-username">
                 <div class="full-button">
                     <a id="login-btn" href="#" class="button button-green">Login</a>

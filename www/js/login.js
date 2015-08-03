@@ -2,8 +2,8 @@
 $( document ).ready(function() {
     $(document).on('click', '#login-btn', function(e){
         e.preventDefault();
-        var url = $(".login-username").val();        
-         
+        var url = $(".login-username").val();
+
         $.ajax({
             url: "http://acquavel.herokuapp.com/api/socio/" + url + "/?format=json",
             dataType: "json",
@@ -15,8 +15,10 @@ $( document ).ready(function() {
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+                $("#no-user").removeClass("hidden");
+                $(".login-username").val('');
             }
-        });         
+        });
     });
 });
 }(jQuery));
