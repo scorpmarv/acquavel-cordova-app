@@ -9,3 +9,7 @@
 .example-wrapper, .example-wrapper div.iscroll-scroller {
     width: 100% !important;
 }
+
+.slider-container.full-bottom {
+    margin-bottom: 0px !important;
+}
