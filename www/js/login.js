@@ -5,8 +5,7 @@ $( document ).ready(function() {
         var url = $(".login-username").val();
 
         $.ajax({
-            //url: "http://acquavel.herokuapp.com/api/socio/" + url + "/?format=json",
-            url: "http://0.0.0.0:8000/api/socio/" + url + "/?format=json",
+            url: "http://acquavel.herokuapp.com/api/socio/" + url + "/?format=json",
             dataType: "json",
             async: true,
             success: function (result) {
