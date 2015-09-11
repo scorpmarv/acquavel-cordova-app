@@ -1,0 +1,24 @@
+.footer-socials{
+    width: 190px;
+}
+
+.sidebar-logo{
+    background-size: 133px 100px;
+    width: 133px;
+    height: 100px;
+}
+
+.center-socials{
+    width: 120px;
+}
+
+.red-bubble {
+    background-color: #C0392B !important;
+    color: #FFF !important;
+    border: medium none !important;
+}
+
+.instagram-color {
+    background-color: #3d6c92;
+    color: #FFF;
+}

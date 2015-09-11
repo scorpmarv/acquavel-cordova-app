@@ -17,13 +17,19 @@
 
 
     function loadData(){
-        console.log(userData);
+        var today = new Date();
         var rev_year = userData.rev_medica.split('-')[0];
         var rev_month = userData.rev_medica.split('-')[1];
         var rev_day = userData.rev_medica.split('-')[2];
-        $('#bubbles').append('<p class="speach-left">Recuerde renovar su revisación médica antes del día: '+rev_day+'/'+rev_month+'/'+rev_year+'</p><div class="clear"></div>');
+        var dateRev = new Date(rev_year,rev_month-1,rev_day);
+        var diffDateRev = (dateRev-today)/1000/60/60/24;
+        if (diffDateRev < 0) {
+            $('#bubbles').append('<p class="speach-left red-bubble">Recuerde que su revisación médica ha vencido el día: '+rev_day+'/'+rev_month+'/'+rev_year+'</p><div class="clear"></div>');
+        }
+        else {
+            $('#bubbles').append('<p class="speach-left">Recuerde renovar su revisación médica antes del día: '+rev_day+'/'+rev_month+'/'+rev_year+'</p><div class="clear"></div>');
+        }
         $.each(userData.planes, function (key,value){
-            var today = new Date();
             var year = value.final.split('-')[0];
             var month = value.final.split('-')[1];
             var day = value.final.split('-')[2];
